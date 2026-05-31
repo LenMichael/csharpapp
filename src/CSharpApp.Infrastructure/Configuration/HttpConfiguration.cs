@@ -13,6 +13,12 @@ public static class HttpConfiguration
         })
         .SetHandlerLifetime(TimeSpan.FromMinutes(httpClientSettings!.LifeTime));
 
+        services.AddHttpClient<ICategoriesService, CategoriesService>(client =>
+        {
+            client.BaseAddress = new Uri(restApiSettings!.BaseUrl!);
+        })
+        .SetHandlerLifetime(TimeSpan.FromMinutes(httpClientSettings!.LifeTime));
+
         return services;
     }
 }

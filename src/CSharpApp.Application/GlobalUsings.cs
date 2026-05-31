@@ -1,5 +1,6 @@
 // Global using directives
 
+global using System.Net.Http.Json;
 global using System.Text.Json;
 global using CSharpApp.Core.Dtos;
 global using CSharpApp.Core.Interfaces;
