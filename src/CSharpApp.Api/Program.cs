@@ -30,4 +30,20 @@ versionedEndpointRouteBuilder.MapGet("api/v{version:apiVersion}/getproducts", as
     .WithName("GetProducts")
     .HasApiVersion(1.0);
 
+versionedEndpointRouteBuilder.MapGet("api/v{version:apiVersion}/getproducts/{id}", async (int id, IProductsService productsService) =>
+    {
+        var product = await productsService.GetProduct(id);
+        return product is null ? Results.NotFound() : Results.Ok(product);
+    })
+    .WithName("GetProduct")
+    .HasApiVersion(1.0);
+
+versionedEndpointRouteBuilder.MapPost("api/v{version:apiVersion}/createproduct", async (CreateProductDto createProductDto, IProductsService productsService) =>
+    {
+        var product = await productsService.CreateProduct(createProductDto);
+        return Results.Created($"api/v1/getproducts/{product!.Id}", product);
+    })
+    .WithName("CreateProduct")
+    .HasApiVersion(1.0);
+
 app.Run();
