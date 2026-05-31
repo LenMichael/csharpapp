@@ -20,6 +20,8 @@ if (app.Environment.IsDevelopment())
 
 //app.UseHttpsRedirection();
 
+app.UseMiddleware<PerformanceMiddleware>();
+
 var versionedEndpointRouteBuilder = app.NewVersionedApi();
 
 versionedEndpointRouteBuilder.MapGet("api/v{version:apiVersion}/getproducts", async (IProductsService productsService) =>
