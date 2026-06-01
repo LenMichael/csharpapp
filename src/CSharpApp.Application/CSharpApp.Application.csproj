@@ -17,4 +17,10 @@
       <ProjectReference Include="..\CSharpApp.Core\CSharpApp.Core.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Products\Commands\CreateProduct\" />
+      <Folder Include="Products\Queries\GetProduct\" />
+      <Folder Include="Products\Queries\GetProducts\" />
+    </ItemGroup>
+
 </Project>
